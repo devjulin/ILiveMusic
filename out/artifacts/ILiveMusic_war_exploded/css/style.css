@@ -1,0 +1,59 @@
+/*CSS Geral do iliveMusic*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    color: #333;
+
+}
+
+body {
+    background-color: #fff;
+    transition: background-color 0.5s ease-out;
+    overflow: hidden;
+}
+
+.bi {
+    color: white;
+}
+
+.bg-menu-lateral {
+    background-color: #7C00FF;
+}
+
+.bg-menulateral-aberto button {
+    background-color: #4A0494;
+}
+
+.bg-menulateral-aberto {
+    background-color: #2F045C;
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded {
+    background: #e0e0e0;
+    height: 4px;
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played {
+    height: 4px;
+    background-color: white !important;
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb {
+    background-color: white !important;
+}
+
+.aplayer .aplayer-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon path {
+    fill: white;
+}
+
+.aplayer .aplayer-info .aplayer-music {
+    margin-bottom: 5px;
+}

@@ -1,0 +1,544 @@
+<%-- 
+    Document   : index
+    Created on : 29 de abr. de 2023, 16:29:14
+    Author     : julio
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>ILiveMusic</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/script.js"></script>
+        <jsp:include page = "includes/bootstrap_5_Lib.jsp" />
+        <jsp:include page = "includes/w3.css_Lib.jsp" />
+        <!-- APlayer CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+
+    </head>
+
+    <style>
+
+        .border-radius{
+            border-radius: 10px;
+        }
+        img{
+            width: 100%;
+            min-height: 250px;
+        }
+        .principal{
+            padding: 40px 0;
+        }
+        .coluna-md-3{
+            margin-bottom: 40px;
+        }
+        .album{
+            position: relative;
+            display: block;
+            border-radius: 75px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px black;
+            transition: all ease 0.4s;
+        }
+        .album:hover{
+            box-shadow: 0 15px 35px white;
+            transform: scale(0.98) translateY(10px);
+        }
+        h3{
+            font-size: 34px;
+            margin-bottom: 34px;
+            border-bottom: 4px solid #e6e6e6;
+            padding-bottom: 15px;
+        }
+        p{
+            font-size: 15px;
+        }
+        h4{
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-top: 15px;
+            font-weight: 700;
+        }
+
+
+        /*default is hide music player*/
+        #aplayer{
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            margin: 0;
+            box-shadow: 0 -2px 2px #dadada;
+            background-color: #D167FF;
+            transition: all ease 0.5s;
+
+        }
+        #aplayer.showPlayer{
+            bottom: 0;
+        }
+
+
+        /*MUSIC PLAYER CUSTOMIZING STYLE*/
+        span{
+            color: white !important;
+            font-size: 16px;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded{
+            background: #e0e0e0;
+            height: 4px;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played{
+            height: 4px;
+            background-color: white !important;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb{
+            background-color: white !important;
+        }
+
+        .aplayer .aplayer-icon{
+            width: 20px;
+            height: 20px;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon path {
+            fill: white;
+        }
+        .aplayer .aplayer-info .aplayer-music{
+            margin-bottom: 5px;
+        }
+        .borda-personalizada{
+            border-radius: 30px;
+        }
+        .ajuste-carrossel{
+            width: 85%;
+            height: 75%;
+        }
+        .coluna-md-3 {
+            flex: 0 0 25%;
+            max-width: 25%;
+        }
+        .hover-vermelho:hover{
+            color: red;
+        }
+
+        /*Ajuste @media para telas menores que 768 pixels de largura "celulares"*/
+        @media (max-width: 768px){
+            .principal p{
+                display: none;
+            }
+            .ajuste-carrossel{
+                width: 100%;
+                height: 100%;
+            }
+            .album-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .album {
+                display: block;
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 0 15px 35px black;
+                transition: all ease 0.4s;
+                max-width: 100%;
+                max-height: 25%;
+
+            }
+            .album:hover{
+                box-shadow: 0 15px 35px white;
+                transform: scale(0.98) translateY(10px);
+            }
+            .coluna-md-3 {
+                padding: 4%;
+                flex: 0 0 33.33%;
+                max-width: 33.33%;
+
+            }
+            .coluna-md-3 a {
+                flex: 0 0 100%;
+                max-width: 100%;
+                max-height: 45%;
+            }
+        }
+    </style>
+    <body class="modo-claro">
+        <!--Menu Lateral Esquerdo -->
+        <jsp:include page = "includes/menu.jsp" />
+        <div id="main" >
+
+            <div class="bg-menu-lateral d-flex justify-content-between px-2">
+                <button id="openNav" class=" bg-menu-lateral w3-button w3-xlarge text-white"onclick="w3_open()">&#9776;</button>
+                <div class="w3-container">
+
+                    <%  HttpSession sessao = request.getSession();
+                        String permissao = String.valueOf(sessao.getAttribute("permissao"));
+                        if (permissao.equals("adm")) {%>
+                    <h1>Administrador</h1>
+                    <%} else if (permissao.equals("premium")) {%>
+                    <h1>Premium</h1>
+                    <%} else if (permissao.equals("gratuito")) {%>
+                    <h1>Gratuito</h1>    
+                    <%}
+                        if (sessao.getAttribute("user") == null) {
+                            permissao = null;
+                    %>
+                    <!-- Botão para abrir o modal -->
+                    <h1 class="text-white fw-bold" style="margin-left: 20%;width: 100%">&nbsp; ILiveMusic <i class="bi bi-boombox"></i></h1>
+
+                </div>
+                <a href="#" class="btn btn-link text-black" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    <i class="bi bi-person-circle fs-1"></i>
+                </a>
+                <jsp:include page="includes/modal_login.jsp" />
+                <% } else {%>
+                <h1 class="text-white fw-bold" style="margin-left: 55%;width: 100%">&nbsp; ILiveMusic <i class="bi bi-boombox"></i></h1>
+
+            </div>
+            <a href="#" class="btn btn-link text-black" data-bs-toggle="modal" data-bs-target="#modalopc">
+                <i class="bi bi-person-circle fs-1"></i>
+            </a>
+
+            <form action="login" method="post" class="d-flex">
+                <button type="submit" value="logout" name="acao" class="btn px-3"><i class=" texto-modos  bi bi-box-arrow-right fs-1"></i></button>
+                <p class="text-center text-white fw-bold fs-4 p-1 mx-5">Bem vindo: ${usuario.nome}</p>
+                <p class="fw-bold text-white">tipo de Conta: ${usuario.permissao}</p>
+            </form>
+            <% }%>
+
+
+        </div>
+        <div class="container-fluid ">
+            <div  class="row ajuste-carrossel mx-auto mt-5">
+                <div class="border-radius d-flex align-self-start">
+
+                    <!-- Carrossel -->
+                    <div id="carrossel" class="carousel slide w-100 h-100" data-bs-ride="carousel">
+
+                        <!-- Indicadores -->
+                        <div class="carousel-indicators d-none">
+                            <button type="button" data-bs-target="#carrossel" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#carrossel" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#carrossel" data-bs-slide-to="2"></button>
+                            <button type="button" data-bs-target="#carrossel" data-bs-slide-to="3"></button>
+                            <button type="button" data-bs-target="#carrossel" data-bs-slide-to="4"></button>
+                        </div>
+                        <!-- Imagens dos slides -->
+                        <div class="carousel-inner borda-personalizada">
+                            <div class="carousel-item active">
+                                <a href="index.jsp">
+                                    <img src="img/carrossel/c1.webp" alt="0" class="d-block w-100">
+                                </a>
+                            </div>
+                            <div class="carousel-item" >
+                                <a href="index.jsp">
+                                    <img src="img/carrossel/c2.jpg" alt="1" class="d-block w-100">
+                                </a>
+                            </div>
+                            <div class="carousel-item" >
+                                <a href="index.jsp">
+                                    <img src="img/carrossel/c3.webp" alt="2" class="d-block w-100">
+                                </a>
+                            </div>
+                            <div class="carousel-item" >
+                                <a href="index.jsp">
+                                    <img src="img/carrossel/c4.jpg" alt="3" class="d-block w-100">
+                                </a>
+                            </div>
+                            <div class="carousel-item" >
+                                <a href="index.jsp">
+                                    <img src="img/carrossel/c5.jpg" alt="4" class="d-block w-100">
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Controles esquerda e direita -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carrossel" data-bs-slide="prev">
+
+                            <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                            </svg>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carrossel" data-bs-slide="next">
+
+                            <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class=" d-flex mx-auto my-5 justify-content-center">
+                        <div class="principal">                             
+                            <div class="container">
+                                <div class="row text-center">
+                                    <div class="col-md-12">
+                                        <h3 class="bi-soundwave text-center fw-bold"> Quente do forno!</h3>
+                                    </div>
+                                    <div class="coluna-md-3">
+                                        <a href="javascript:void();" class="album" data-switch="0">
+                                            <img src="https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                                        </a>
+                                        <h4>Lorem ipsum</h4>
+                                        <p>lorem ipsum - 2010</p>
+                                    </div>
+                                    <div class="coluna-md-3">
+                                        <a href="#" class="album border-5 " data-switch="1">
+                                            <img src="https://images.pexels.com/photos/1370545/pexels-photo-1370545.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                                        </a>
+                                        <h4>Repellat illo</h4>
+                                        <p>Lorem ipsum dolor sit ame - 2020</p>
+                                    </div>
+                                    <div class="coluna-md-3">
+                                        <a href="#" class="album" data-switch="2">
+                                            <img src="https://images.pexels.com/photos/838696/pexels-photo-838696.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                                        </a>
+                                        <h4>adipisicing elit</h4>
+                                        <p>Porro distinctio fuga - 2020</p>
+                                    </div>
+
+                                    <div class="coluna-md-3">
+                                        <a href="#" class="album" data-switch="3">
+                                            <img src="https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                                        </a>
+                                        <h4>Atque ab</h4>
+                                        <p>Harum nam unde digniss - 2020</p>
+                                    </div>
+                                    <div class="coluna-md-3">
+                                        <a href="#" class="album" data-switch="4">
+                                            <img src="https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                                        </a>
+                                        <h4>praesentium fugiat</h4>
+                                        <p>Lorem ipsum dolor - 2020</p>
+                                    </div>
+                                    <div class="coluna-md-3">
+                                        <a href="#" class="album" data-switch="5">
+                                            <img src="https://images.pexels.com/photos/210922/pexels-photo-210922.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                                        </a>
+                                        <h4>veniam expedita</h4>
+                                        <p>Porro distinctio fuga - 2020</p>
+                                    </div>
+                                    <div class="coluna-md-3">
+                                        <a href="#" class="album" data-switch="6">
+                                            <img src="https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                                        </a>
+                                        <h4>Lorem ipsum</h4>
+                                        <p>Lorem ipsum - 2010</p>
+                                    </div>
+                                    <div class="coluna-md-3">
+                                        <a href="#" class="album">
+                                            <img src="https://images.pexels.com/photos/1370545/pexels-photo-1370545.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                                        </a>
+                                        <h4>Repellat illo</h4>
+                                        <p>Lorem ipsum dolor sit ame - 2020</p>
+                                    </div>
+                                </div>
+                                <!-- Crie o HTML do carrossel -->
+                                <div class="container item-align-center">
+                                <div class="swiper-container">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <a href="#" class="album">
+                                                <img src="https://images.pexels.com/photos/1699161/pexels-photo-1699161.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                                            </a>
+                                            <h4>Lorem ipsum</h4>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <a href="#" class="album">
+                                                <img src="https://images.pexels.com/photos/838702/pexels-photo-838702.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                                            </a>
+                                            <h4>Repellat illo</h4>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <a href="#" class="album">
+                                                <img src="https://images.pexels.com/photos/838702/pexels-photo-838702.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                                            </a>
+                                            <h4>Repellat illo</h4>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <a href="#" class="album">
+                                                <img src="https://images.pexels.com/photos/838702/pexels-photo-838702.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                                            </a>
+                                            <h4>Repellat illo</h4>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <a href="#" class="album">
+                                                <img src="https://images.pexels.com/photos/838702/pexels-photo-838702.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                                            </a>
+                                            <h4>Repellat illo</h4>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <a href="#" class="album">
+                                                <img src="https://images.pexels.com/photos/838702/pexels-photo-838702.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                                            </a>
+                                            <h4>Repellat illo</h4>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <a href="#" class="album">
+                                                <img src="https://images.pexels.com/photos/838702/pexels-photo-838702.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                                            </a>
+                                            <h4>Repellat illo</h4>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <a href="#" class="album">
+                                                <img src="https://images.pexels.com/photos/838702/pexels-photo-838702.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                                            </a>
+                                            <h4>Repellat illo</h4>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <a href="#" class="album">
+                                                <img src="https://images.pexels.com/photos/838702/pexels-photo-838702.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                                            </a>
+                                            <h4>Repellat illo</h4>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <a href="#" class="album">
+                                                <img src="https://images.pexels.com/photos/838702/pexels-photo-838702.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                                            </a>
+                                            <h4>Repellat illo</h4>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <a href="#" class="album">
+                                                <img src="https://images.pexels.com/photos/838702/pexels-photo-838702.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                                            </a>
+                                            <h4>Repellat illo</h4>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <a href="#" class="album">
+                                                <img src="https://images.pexels.com/photos/838702/pexels-photo-838702.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                                            </a>
+                                            <h4>Repellat illo</h4>
+                                        </div>
+                                    </div>
+                                        <!-- Resto do código HTML -->
+                                    </div>
+                                    <!-- Adicione as setas de navegação -->
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Jquery Link -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <!-- Bootstrap Link -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- APlayer Jquery link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script>	
+    <script>
+                    /*Abrir menu lateral esquerdo*/
+                    function w3_open() {
+                        if (window.innerWidth > 768) {
+                            document.getElementById("main").style.marginLeft = "15%";
+                            document.getElementById("aplayer").style.marginLeft = "15%";
+                            document.getElementById("mySidebar").style.width = "15%";
+                            document.getElementById("mySidebar").style.display = "block";
+                            document.getElementById("openNav").style.display = 'none';
+                            document.getElementById("aplayer").style.maxWidth = "calc(85% - 20px)";
+                        } else {
+                            document.getElementById("main").style.marginLeft = "30%";
+                            document.getElementById("mySidebar").style.width = "30%";
+                            document.getElementById("mySidebar").style.display = "block";
+                            document.getElementById("openNav").style.display = 'none';
+                            document.getElementById("aplayer").style.maxWidth = "calc(70% - 20px)";
+                        }
+                    }
+
+                    function w3_close() {
+                        document.getElementById("main").style.marginLeft = "0%";
+                        document.getElementById("aplayer").style.marginLeft = "0%";
+                        document.getElementById("mySidebar").style.display = "none";
+                        document.getElementById("openNav").style.display = "inline-block";
+                        document.getElementById("aplayer").style.maxWidth = "100%";
+                    }
+                    ;
+    </script>
+    <script>
+        // NOW I CLICK album-poster TO GET CURRENT SONG ID
+        $(".album").on('click', function (e) {
+            var dataSwitchId = $(this).attr('data-switch');
+            //console.log(dataSwitchId);
+
+            // and now i use aplayer switch function see
+            ap.list.switch(dataSwitchId); //this is static id but i use dynamic 
+
+            // aplayer play function
+            // when i click any song to play
+            ap.play();
+
+            // click to slideUp player see
+            $("#aplayer").addClass('showPlayer');
+        });
+
+        const ap = new APlayer({
+            container: document.getElementById('aplayer'),
+            listFolded: true,
+            audio: [
+                {
+                    name: 'Invisible Beauty',
+                    artist: 'Artist Name',
+                    url: 'source/invisible_beauty.mp3',
+                    cover: 'https://images.pexels.com/photos/1699161/pexels-photo-1699161.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+                },
+                {
+                    name: 'Just Stay', // NOME SOM
+                    artist: 'Artist Name', //NOME ARTISTA
+                    url: 'https://live.hunter.fm/pop_high', // CAMINHO DA PASTA ONDE ESTA A MUSICA
+                    cover: 'https://images.pexels.com/photos/838702/pexels-photo-838702.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' // IMAGEM
+                },
+                {
+                    name: 'Liquid Time',
+                    artist: 'Artist Name',
+                    url: 'source/liquid_time.mp3',
+                    cover: 'https://images.pexels.com/photos/838696/pexels-photo-838696.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                },
+                {
+                    name: 'Silky Smooth',
+                    artist: 'Artist Name',
+                    url: 'source/silky_smooth.mp3',
+                    cover: 'https://images.pexels.com/photos/1370545/pexels-photo-1370545.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                }
+            ]
+        });
+    </script>
+    <!-- Inclua a biblioteca JavaScript do Swiper -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Adicione o código JavaScript para inicializar o carrossel -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 4, // Número de itens visíveis ao mesmo tempo
+            spaceBetween: 10, // Espaçamento entre os itens
+            navigation: {
+                nextEl: '.swiper-button-next', // Elemento HTML para a seta de próxima
+                prevEl: '.swiper-button-prev', // Elemento HTML para a seta anterior
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1 // Número de itens visíveis em telas menores
+                },
+                576: {
+                    slidesPerView: 2 // Número de itens visíveis em telas maiores que 576px
+                },
+                768: {
+                    slidesPerView: 3 // Número de itens visíveis em telas maiores que 768px
+                },
+                992: {
+                    slidesPerView: 4 // Número de itens visíveis em telas maiores que 992px
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

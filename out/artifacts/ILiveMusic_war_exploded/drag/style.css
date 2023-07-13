@@ -1,0 +1,59 @@
+.custom-btn-container {
+    height: 48px;
+    width: 48px;
+    background: #023047;
+    border-radius: 50%;
+    position: absolute;
+    top: 48px;
+    right: 100px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-btn-container.active .btn {
+    transform: rotateZ(45deg);
+}
+
+.custom-btn-container .btn {
+    color: #f1faee;
+    font-size: 36px;
+    font-weight: bold;
+    user-select: none;
+    transition: all 500ms;
+}
+
+.custom-btn-container .btn-options {
+    position: absolute;
+    left: -350%;
+    top: -50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: translateX(50px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 500ms;
+}
+
+.custom-btn-container.active .btn-options {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.custom-btn-container .btn-options a {
+    display: block;
+    padding: 8px 32px;
+    background: #90e0ef;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    color: #000814;
+    transition: all 500ms;
+}
+
+.custom-btn-container .btn-options a:hover {
+    background: #000814;
+    color: #90e0ef;
+}
