@@ -145,6 +145,11 @@ A página Minhas Playlists proporcionará aos usuários a capacidade de criar e 
 - Estrutura: Web
 - Padrão de Projeto: MVC (Model-View-Controller) com DAO (Data Access Object)
 
+## Dependências
+- As seguintes dependências são necessárias para o projeto:
+
+Driver JDBC do MySQL 5.1.23: é utilizado para estabelecer a conexão com o banco de dados MySQL versão 5.1.23.
+
 ## Como Executar
 
 1. Clone o repositório em sua máquina local.
@@ -157,38 +162,66 @@ A página Minhas Playlists proporcionará aos usuários a capacidade de criar e 
 
 Contribuições para aprimorar e expandir a aplicação são bem-vindas. Sinta-se à vontade para enviar pull requests e relatar problemas no repositório do projeto.
 
+## Recursos em Desenvolvimento
+
+Estamos constantemente trabalhando em novos recursos e funcionalidades para aprimorar a experiência do usuário. Abaixo estão alguns recursos que estão atualmente em desenvolvimento:
+
+### Edição de Playlists Próprias
+
+Estamos desenvolvendo a funcionalidade que permitirá aos usuários editar suas playlists existentes. Isso incluirá a capacidade de alterar o título da playlist, adicionar ou remover músicas e atualizar a capa da playlist.
+
+### Adição de Músicas nas Playlists
+
+Estamos trabalhando na implementação da opção de adicionar músicas às playlists. Os usuários poderão pesquisar e selecionar músicas para incluir em suas playlists, tornando-as personalizadas de acordo com suas preferências musicais.
+
+### Pesquisa de Playlists de Outros Usuários
+
+Estamos desenvolvendo uma página de pesquisa que permitirá aos usuários encontrar playlists criadas por outros usuários. Essa funcionalidade permitirá filtrar as playlists por gênero, popularidade ou outros critérios, além de visualizar as músicas contidas em cada playlist e o nome do usuário que a criou.
+
+### Opção de Seguir Usuários
+
+Estamos implementando a opção de seguir outros usuários na plataforma. Os usuários poderão escolher seguir perfis de outros usuários, o que lhes permitirá receber atualizações sobre as playlists criadas por esses usuários e visualizar suas publicações.
+
+### Favoritar Músicas e Criar Playlist de Favoritos
+
+Estamos trabalhando na funcionalidade de favoritar músicas, permitindo aos usuários salvar suas músicas favoritas em uma playlist separada. Essa playlist de favoritos será de fácil acesso e permitirá que os usuários organizem e acessem rapidamente suas músicas preferidas.
+
+### Página de Publicações dos Usuários Seguidos
+
+Estamos desenvolvendo uma página que exibirá as publicações dos usuários que você segue. Nessa página, você poderá ver as playlists criadas por esses usuários, bem como quaisquer atualizações ou alterações feitas nessas playlists.
+
+Estamos empenhados em fornecer um ambiente musical dinâmico e enriquecedor, e esses recursos em desenvolvimento visam melhorar ainda mais a experiência dos nossos usuários. Fique atento às futuras atualizações!
+
 ## Imagens do Projeto
 
 ### Página de Login/Cadastro
 
-![Página de Login/Cadastro](imgsReadme/loginCadastro.png)
+![Página de Login/Cadastro](imgsReadme/front.png)
 
 ### Página Inicial
 
-![Página Inicial](imgsReadme/paginaInicial.png)
+![Página Inicial](imgsReadme/index.png)
 
 ### Página de Edição de Perfil
 
-![Página de Edição de Perfil](imgsReadme/editarPerfil.png)
+![Página de Edição de Perfil](imgsReadme/editar_perfil.png)
 
 ### Página de Planos de Assinatura
 
-![Página de Planos de Assinatura](imgsReadme/planosAssinatura.png)
+![Página de Planos de Assinatura](imgsReadme/planos.png)
 
 ### Página do Painel de Administração (PAINEL ADM)
 
-![Página do Painel de Administração](imgsReadme/painelAdministracao.png)
+![Página do Painel de Administração](imgsReadme/painel_adm.png)
 
 ### Página de Pagamentos no Painel de Administração
 
-![Página de Pagamentos](imgsReadme/pagamentos.png)
+![Página de Pagamentos](imgsReadme/pagamento.png)
 
 ### Página de Assinaturas no Painel de Administração
 
-![Página de Assinaturas](imgsReadme/assinaturas.png)
+![Página de Assinaturas](imgsReadme/assinatura.png)
 
 ### Página de Minhas Playlists
 
-![Página de Minhas Playlists](imgsReadme/minhasPlaylists.png)
-
-Nota: As imagens utilizadas são apenas ilustrativas e podem não refletir o design final da aplicação.
+![Página de Minhas Playlists](imgsReadme/minhas_playlists.png)
