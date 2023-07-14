@@ -1,227 +1,232 @@
-# ILiveMusic - Aplicação de Streaming de Música
+# ILiveMusic - Music Streaming Application
 
 ![ILiveMusic Logo](imgsReadme/logo-ilivemusic.png)
 
-Este é o arquivo README para a aplicação de streaming de música ILiveMusic, desenvolvida em Java utilizando a IDE Netbeans 8.2. A aplicação segue a estrutura web e utiliza o padrão MVC (Model-View-Controller) com DAO (Data Access Object).
+This is the README file for the ILiveMusic music streaming application developed in Java using the Netbeans 8.2 IDE. The application follows a web structure and utilizes the MVC (Model-View-Controller) pattern with DAO (Data Access Object).
 
-## Resumo
+## Summary
 
-A aplicação ILiveMusic oferece acesso a rádios 24/7 e playlists de músicas diversas, tanto para usuários gratuitos quanto para usuários PREMIUM. Os usuários podem realizar cadastro, edição de perfil, administração, restrições, assinaturas, solicitações de pagamento, criação de playlists e muito mais.
+The ILiveMusic application provides access to 24/7 radios and playlists of various genres for both free and PREMIUM users. Users can register, edit their profiles, perform administration tasks, manage restrictions, subscribe to premium plans, make payment requests, create playlists, and much more.
 
-## Funcionalidades
+## Features
 
-A aplicação possui as seguintes funcionalidades:
+The application includes the following features:
 
-### Página de Login/Cadastro
+### Login/Registration Page
 
-A página de Login/Cadastro permite que os usuários se cadastrem na plataforma, verifiquem a disponibilidade do login desejado e acessem os termos e condições de uso. Essa página fornece informações sobre quais dados são coletados dos usuários e como são processados.
+The Login/Registration page allows users to register on the platform, check the availability of their desired username, and access the terms and conditions of use. This page provides information about the data collected from users and how it is processed.
 
-Na seção de cadastro, os usuários podem preencher campos como nome, login, email, senha e confirmar senha. Há também uma caixa de seleção para confirmar a concordância com as regras estabelecidas. Além disso, a página inclui uma área de login, onde os usuários podem inserir suas credenciais de login (login e senha).
+In the registration section, users can fill in fields such as name, username, email, password, and confirm password. There is also a checkbox to confirm agreement with the established rules. Additionally, the page includes a login area where users can enter their login credentials (username and password).
 
-A página de Login/Cadastro utiliza cards ilustrativos animados para fornecer feedback visual aos usuários. Esses cards indicam se o usuário está restrito, se a senha está incorreta ou se o cadastro foi efetuado com sucesso. Além disso, há um carrossel lateral que oferece uma pré-visualização das páginas de um usuário gratuito e de um usuário PREMIUM, mostrando as diferentes funcionalidades disponíveis para cada tipo de usuário.
+The Login/Registration page utilizes animated illustrative cards to provide visual feedback to users. These cards indicate if the user is restricted, if the password is incorrect, or if the registration was successful. Additionally, there is a side carousel that offers a preview of the pages for a free user and a PREMIUM user, showcasing the different functionalities available for each user type.
 
-### Página Index
+### Index Page
 
-A página Index é a página inicial do aplicativo, que oferece uma experiência imersiva aos usuários. Possui os seguintes recursos:
+The Index page is the home page of the application, offering an immersive experience to users. It features the following elements:
 
-- Carrossel de Eventos: Exibe um carrossel com cards de eventos, permitindo que os usuários tenham acesso rápido e fácil às informações sobre eventos importantes.
+Events Carousel: Displays a carousel with event cards, allowing users to quickly access information about important events.
 
-- Carrosséis de Radios 24/7: Apresenta carrosséis com listas de rádios 24/7, tanto gratuitas quanto premium. Os usuários gratuitos têm acesso apenas às rádios gratuitas, enquanto os usuários premium têm acesso a todas as rádios. Cada card de rádio exibe uma tag indicando se é gratuito ou premium.
+24/7 Radios Carousels: Presents carousels with lists of 24/7 radios, both free and premium. Free users have access only to the free radios, while premium users have access to all radios. Each radio card displays a tag indicating if it is free or premium.
 
-- Carrosséis de Playlists: Mostra carrosséis com listas de playlists de vários artistas, disponíveis tanto para usuários gratuitos quanto premium. Os usuários gratuitos podem acessar apenas as playlists gratuitas, enquanto os usuários premium têm acesso a todas as playlists. Cada card de playlist exibe uma tag indicando se é gratuito ou premium.
+Playlists Carousels: Shows carousels with lists of playlists from various artists, available to both free and premium users. Free users can access only the free playlists, while premium users have access to all playlists. Each playlist card displays a tag indicating if it is free or premium.
 
-- Player de Música: Apresenta um player de música totalmente personalizado e aprimorado, utilizado para reproduzir as rádios 24/7 disponíveis para os usuários gratuitos. O player oferece controles para reproduzir/pausar, avançar ou retroceder para a próxima música, avançar ou retroceder no tempo da música e ajustar o volume. Quando a última música da lista é reproduzida, a próxima música será a primeira, garantindo um loop infinito. O player está sempre visível no rodapé da página.
+Music Player: Features a fully customized and enhanced music player used to play the 24/7 radios available to free users. The player provides controls to play/pause, skip to the next song, rewind to the previous song, fast forward or rewind within the song, and adjust the volume. When the last song on the list is played, the next song will be the first one, ensuring an infinite loop. The player is always visible at the bottom of the page.
 
-- Menu Sidebar: Inclui um menu sidebar com opções para editar o perfil do usuário e selecionar o modo claro/escuro da interface. A preferência de modo claro/escuro é armazenada localmente no armazenamento do navegador (localStorage) e se reflete em todas as páginas do aplicativo.
+Sidebar Menu: Includes a sidebar menu with options to edit the user's profile and select the light/dark mode of the interface. The light/dark mode preference is stored locally in the browser's storage (localStorage) and reflects on all pages of the application.
 
-- Menu Efeitos Premium: Disponível apenas para usuários premium, oferece opções de Efeitos Centro e Efeitos Laterais. Esses efeitos personalizam a página Index, tornando-a única para os usuários premium.
+Premium Effects Menu: Available only for premium users, offers options for Center Effects and Side Effects. These effects customize the Index page, making it unique for premium users.
 
-- Menu no Navbar: O navbar contém um menu que oferece acesso ao painel de administração para usuários administradores, opção para editar o perfil, acesso às "Minhas Playlists" para usuários premium e opção de sair. Abaixo do menu, há uma animação de marquee que exibe a saudação "Bem-vindo(a) + nome do usuário" e o tipo de conta do usuário (ADM, PREMIUM ou gratuito). O navbar também exibe a frase "SEJA PREMIUM" para usuários que ainda não possuem assinatura premium, mostrando quantos dias restam para usuários com assinatura premium. Ao clicar em "SEJA PREMIUM", os usuários são redirecionados para a página de planos de assinatura. O botão de "SAIR" permite desconectar da conta atual.
+Navbar Menu: The navbar contains a menu that provides access to the administration panel for administrators, an option to edit the profile, access to "My Playlists" for premium users, and a logout option. Below the menu, there is a marquee animation displaying the greeting "Welcome + user's name" and the user's account type (ADM, PREMIUM, or free). The navbar also displays the "BECOME PREMIUM" message for users who don't have a premium subscription yet, showing how many days are remaining for premium subscribers. By clicking on "BECOME PREMIUM", users are redirected to the subscription plans page. The "LOGOUT" button allows users to disconnect from their current account.
 
-### Página Editar Perfil
+The Index page provides an immersive and engaging experience for users, offering quick access to radios, playlists, and an enhanced music player, all within a visually appealing and user-friendly interface.
 
-A página Editar Perfil permite que o próprio usuário faça alterações em seu perfil. Os seguintes recursos estão disponíveis:
+### Edit Profile Page
 
-- Edição de Imagem de Perfil: O usuário pode selecionar uma nova imagem de perfil para ser exibida em sua conta. A página suporta imagens nos formatos JPG, PNG, JPEG e GIF, com um tamanho máximo de 5 MB.
+The Edit Profile page allows users to make changes to their own profile. The following features are available:
 
-- Alteração de Nome: O usuário pode editar seu nome, permitindo que ele atualize as informações pessoais conforme necessário.
+Profile Image Editing: Users can select a new profile image to be displayed on their account. The page supports images in formats such as JPG, PNG, JPEG, and GIF, with a maximum size of 5 MB.
 
-- Atualização de Email: É possível alterar o endereço de email associado à conta. O usuário pode inserir o novo email desejado.
+Name Change: Users can edit their name, allowing them to update their personal information as needed.
 
-- Mudança de Senha: Caso o usuário deseje alterar sua senha, ele pode inserir a senha atual e definir uma nova senha. A confirmação da nova senha é exigida para garantir que não haja erros de digitação.
+Email Update: It is possible to change the email address associated with the account. The user can enter the new desired email.
 
-- Login: O campo de login não é editável nesta página, pois ele é único e serve como identificador único do usuário na plataforma.
+Password Change: If the user wishes to change their password, they can enter the current password and set a new password. Confirmation of the new password is required to ensure there are no typing errors.
 
-A página Editar Perfil oferece uma interface intuitiva e fácil de usar, permitindo que os usuários façam alterações em seu perfil de forma conveniente e segura.
+Username: The username field is not editable on this page since it is unique and serves as the user's unique identifier on the platform.
 
-### Página Planos de Assinatura
+The Edit Profile page offers an intuitive and user-friendly interface, allowing users to make convenient and secure changes to their profile.
 
-A página Planos de Assinatura exibe os diferentes planos disponíveis para assinatura na plataforma. Os seguintes recursos estão presentes:
+### Subscription Plans Page
 
-- Cards de Planos: São exibidos cards com informações detalhadas sobre cada plano disponível. Isso inclui os planos gratuito, mensal e trimestral. Cada card destaca as vantagens e benefícios oferecidos pelo plano, detalhando o que está incluído e o que os usuários podem aproveitar ao assinar.
+The Subscription Plans page displays the different subscription plans available on the platform. The following features are present:
 
-- Desconto no Plano Trimestral: O plano trimestral exibe um valor de desconto especial de -R$10,00 "BRL", tornando essa opção mais atrativa para os usuários. Essa informação é destacada no card do plano trimestral.
+Plan Cards: Cards are displayed with detailed information about each available plan. This includes the free, monthly, and quarterly plans. Each card highlights the advantages and benefits offered by the plan, detailing what is included and what users can enjoy upon subscribing.
 
-- Processo de Solicitação de Assinatura: Ao selecionar um dos cards de plano, o usuário avançará para a próxima etapa do processo de solicitação de assinatura. Nessa etapa, é exibido um card informativo destacando a importância de enviar o código HASH único na descrição do pagamento PIX. Esse código HASH é gerado aleatoriamente e serve para identificar o pagamento e vinculá-lo à assinatura do usuário.
+Discount on Quarterly Plan: The quarterly plan displays a special discount value of -R$10.00 "BRL", making this option more attractive to users. This information is highlighted on the quarterly plan card.
 
-- Confirmação da Compra: Ao clicar em "Confirmar Compra", um card é exibido, reforçando a atenção do usuário para a necessidade de inserir o código HASH na descrição do pagamento PIX. Caso o usuário clique em "Cancelar" ou "Resetar" antes de confirmar a compra, o processo de solicitação será cancelado. No entanto, ao clicar em "Confirmar Compra", o usuário avançará para uma nova tela de finalização de pagamento.
+Subscription Request Process: Upon selecting one of the plan cards, the user advances to the next step of the subscription request process. In this step, an informative card is displayed, emphasizing the importance of including the unique HASH code in the PIX payment description. This HASH code is randomly generated and serves to identify the payment and link it to the user's subscription.
 
-- Tela de Finalização de Pagamento: Nessa tela, após passar por duas animações de checkout, é exibida uma animação de confetes estourando em três vezes. À esquerda, um card apresenta o QR CODE do pagamento PIX, e à direita, um card informa que a solicitação de assinatura foi enviada com sucesso. O texto também informa que um colaborador verificará o pagamento, e, caso seja efetuado com sucesso, a assinatura será liberada na conta do usuário de acordo com o plano adquirido.
+Purchase Confirmation: By clicking "Confirm Purchase", a card is displayed, reinforcing the user's attention to the need for including the HASH code in the PIX payment description. If the user clicks "Cancel" or "Reset" before confirming the purchase, the request process is canceled. However, by clicking "Confirm Purchase", the user advances to a new payment completion screen.
 
-- Código HASH Aleatório: Logo abaixo, em destaque vermelho, é exibido o CÓDIGO HASH aleatório e único. Esse código é gerado pelo sistema, e caso já exista um código igual, será gerado um novo automaticamente. O usuário deve inserir esse código no pagamento PIX para que seja corretamente identificado e vinculado à sua assinatura. É importante destacar que, se o pagamento não for identificado (ou seja, o usuário não efetuar o pagamento), o sistema excluirá automaticamente a solicitação gerada, caso o status da solicitação de pagamento esteja pendente por mais de 30 dias.
+Payment Completion Screen: On this screen, after going through two checkout animations, a confetti animation is displayed three times. On the left side, a card presents the PIX payment QR CODE, and on the right side, a card informs that the subscription request has been successfully submitted. The text also informs that a team member will verify the payment, and if it is successfully processed, the subscription will be activated on the user's account according to the purchased plan.
 
-A página Planos de Assinatura oferece uma experiência completa ao usuário, fornecendo informações claras e orientações sobre o processo de assinatura, garantindo uma transição suave para a finalização do pagamento e a ativação da assinatura.
+Random HASH Code: Just below, highlighted in red, the random and unique HASH CODE is displayed. This code is generated by the system, and if an identical code already exists, a new one will be automatically generated. The user should include this code in the PIX payment for it to be correctly identified and linked to their subscription. It is important to note that if the payment is not identified (i.e., the user does not make the payment), the system will automatically delete the generated request if the payment request status remains pending for more than 30 days.
 
-### Página Painel ADM
+The Subscription Plans page provides a comprehensive user experience, providing clear information and guidance on the subscription process, ensuring a smooth transition to payment completion and subscription activation.
 
-Ao entrar na página Painel ADM, o administrador terá acesso aos menus e à documentação da administração, que resume cada função e descreve como atuar dentro da comunidade como colaborador da equipe. Além disso, a página possui um botão para alternar entre os modos claro e escuro, afetando todas as demais páginas da aplicação de acordo com a seleção do administrador.
+### ADM Panel Page
 
-A página oferece os seguintes recursos:
+Upon entering the ADM Panel page, the administrator will have access to menus and administration documentation, which summarizes each function and describes how to act within the community as a team collaborator. Additionally, the page has a button to switch between light and dark modes, affecting all other pages of the application according to the administrator's selection.
 
-- Cadastro de Usuário: Ao selecionar essa opção no menu, o administrador terá acesso ao formulário de cadastro de usuário. Nesse caso, não é necessário marcar a caixa de confirmação dos termos, e o administrador poderá escolher o tipo de usuário a ser cadastrado (comum, premium ou administrador). A senha não precisa ser confirmada no momento do cadastro, pois o usuário poderá alterá-la posteriormente, se necessário.
+The page offers the following features:
 
-- Usuários: Ao selecionar essa opção no menu, será exibida uma lista de todos os usuários cadastrados na plataforma. Cada usuário é representado com a foto, nome, ID, login, email e senha ocultada por asteriscos (***), pois a senha é privada. Além disso, é exibido o status da assinatura do usuário. Para usuários administradores, o status aparece como "Premium: Permanente". Para usuários premium comuns, é mostrada a quantidade de dias restantes em sua assinatura. Também é exibido o tipo de conta do usuário (comum, premium, administrador ou banido). Quando um usuário está banido, significa que ele possui uma restrição ativa que ainda não expirou. É possível pesquisar um usuário filtrando pelo nome, além de editar ou excluir um usuário. Para evitar exclusões acidentais, ao selecionar a opção de exclusão, será exibido um popup de confirmação.
+User Registration: By selecting this option in the menu, the administrator gains access to the user registration form. In this case, there is no need to check the terms agreement checkbox, and the administrator can choose the type of user to be registered (regular, premium, or administrator). The password does not need to be confirmed during registration as the user can change it later if necessary.
 
-A página Painel ADM oferece ao administrador todas as ferramentas necessárias para gerenciar os usuários da plataforma, permitindo cadastrar novos usuários, visualizar informações relevantes e realizar ações como edição e exclusão, com medidas de segurança para evitar erros ou exclusões acidentais.
+Users: By selecting this option in the menu, a list of all registered users on the platform is displayed. Each user is represented with their photo, name, ID, username, email, and a password hidden by asterisks (***), as passwords are private. Additionally, the user's subscription status is displayed. For administrators, the status appears as "Premium: Permanent". For regular premium users, the remaining number of days in their subscription is shown. The user's account type (regular, premium, administrator, or banned) is also displayed. When a user is banned, it means they have an active restriction that has not yet expired. It is possible to search for a user by filtering their name, as well as edit or delete a user. To prevent accidental deletions, a confirmation popup is displayed when selecting the deletion option.
 
-### Página Editar Usuário - PAINEL ADM
+The ADM Panel page provides administrators with all the necessary tools to manage user accounts on the platform, including user registration, viewing relevant information, and taking actions such as editing and deleting users, with security measures to prevent errors or accidental deletions.
 
-A página Editar Usuário do PAINEL ADM exibe todos os dados relevantes do usuário selecionado na lista de usuários do painel administrativo. Os dados exibidos incluem nome, login, email, senha, tipo de conta e restrições do usuário, caso haja alguma. As restrições são exibidas com informações sobre se estão ativas ou expiradas.
+### Edit User Page - ADM Panel
 
-Nessa página, é possível editar todos os dados do usuário, incluindo a criação ou atualização de restrições. Ao atualizar uma restrição, é possível remover o status ativo da mesma, mas a restrição em si não será excluída. Isso é importante para manter um histórico detalhado de cada usuário e identificar se houve reincidência de restrições anteriores.
+The Edit User page in the ADM Panel displays all relevant data of the selected user from the user list in the administrative panel. The displayed data includes name, username, email, password, account type, and user restrictions, if any. The restrictions are displayed with information about whether they are active or expired.
 
-Ao criar uma restrição, é possível selecionar uma data de término para que ela expire. O sistema removerá automaticamente a restrição quando essa data for atingida. Além disso, é possível selecionar o motivo da restrição. Quando um usuário com restrição ativa tentar efetuar o login em sua conta, será exibido um card personalizado informando que a conta está restrita. O card informará a data em que a restrição será removida e o motivo da restrição, para que o usuário tenha ciência do motivo pelo qual está restrito.
+On this page, it is possible to edit all user data, including creating or updating restrictions. When updating a restriction, it is possible to remove its active status, but the restriction itself will not be deleted. This is important to maintain a detailed history of each user and identify if there have been any previous restriction recurrences.
 
-A página Editar Usuário do PAINEL ADM é visualmente aprimorada, contando com cards ilustrativos animados que se atualizam conforme as alterações feitas pelo administrador. Essa página oferece uma interface intuitiva e eficiente para gerenciar os dados dos usuários, incluindo a aplicação e remoção de restrições, proporcionando um controle completo sobre as contas de usuário no sistema.
+When creating a restriction, it is possible to select an end date for it to expire. The system will automatically remove the restriction when that date is reached. Additionally, it is possible to select the reason for the restriction. When a user with an active restriction tries to log in to their account, a personalized card is displayed informing them that the account is restricted. The card provides the date when the restriction will be removed and the reason for the restriction, so the user is aware of the reason for their restriction.
 
-### Página de Pagamentos no Painel de Administração
+The Edit User page in the ADM Panel is visually enhanced, featuring animated illustrative cards that update as changes are made by the administrator. This page provides an intuitive and efficient interface for managing user data, including applying and removing restrictions, offering full control over user accounts in the system.
 
-A página de pagamentos lista todas as solicitações de pagamento feitas pelos usuários ao selecionarem os planos de assinatura na tela de Planos de Assinatura. Cada solicitação gera um código HASH aleatório único, que pode ser usado para filtrar a pesquisa. O código HASH é gerado concatenando a ID do usuário com um código aleatório único, o que permite uma identificação mais ágil do HASH.
+### Payments Page in the Administration Panel
 
-As solicitações de pagamento são exibidas com os seguintes campos:
-- Código HASH: identificação única da solicitação de pagamento.
-- ID do usuário: identificação do usuário que fez a solicitação.
-- Status do Pagamento: mostra se o pagamento ainda está pendente de verificação por parte da equipe responsável.
-- Data de Expiração do Pagamento: indica a data de 31 dias, após a qual o sistema exclui automaticamente a solicitação de pagamento do banco de dados, evitando a acumulação de dados desnecessários.
+The Payments page lists all payment requests made by users when selecting the subscription plans on the Subscription Plans screen. Each request generates a unique random HASH code, which can be used to filter the search. The HASH code is generated by concatenating the user's ID with a unique random code, allowing for quicker identification of the HASH.
 
-Quando um pagamento é identificado pelo banco e o usuário envia o código HASH na descrição do pagamento, a equipe responsável verifica o código HASH nesta página. Com base nessa verificação, a assinatura correspondente ao código HASH é ativada ou não. Também é exibida a quantidade de dias premium que corresponde à duração da assinatura selecionada pelo usuário.
+The payment requests are displayed with the following fields:
 
-Ao clicar em "Ativar Assinatura", o administrador tem acesso a todos os dados relevantes para registrar a ativação da assinatura. Em caso de promoções ou ofertas especiais, como "Assine o plano trimestral de 90 dias e ganhe mais 10", o administrador pode inserir a quantidade de dias correspondente à promoção, garantindo que o usuário receba o benefício. Após a ativação da assinatura, um card é exibido informando se a assinatura foi ativada ou não.
+HASH Code: Unique identifier of the payment request.
+User ID: Identifier of the user who made the request.
+Payment Status: Indicates if the payment is still pending verification by the responsible team.
+Payment Expiration Date: Indicates the 31-day expiration date, after which the system automatically deletes the payment request from the database, avoiding unnecessary data accumulation.
+When a payment is identified by the bank, and the user sends the HASH code in the payment description, the responsible team checks the HASH code on this page. Based on this verification, the subscription corresponding to the HASH code is activated or not. The number of premium days corresponding to the duration of the subscription selected by the user is also displayed.
 
-### Página Assinaturas - PAINEL ADM
+By clicking "Activate Subscription", the administrator has access to all relevant data to record the activation of the subscription. In case of promotions or special offers, such as "Subscribe to the 90-day quarterly plan and get an extra 10 days", the administrator can enter the corresponding number of days for the promotion to ensure the user receives the benefit. After the subscription is activated, a card is displayed informing whether the subscription was successfully activated or not.
 
-A página Assinaturas do PAINEL ADM lista todas as assinaturas efetivadas que foram ativadas a partir de uma solicitação de pagamento. Ela exibe os seguintes campos:
+### Subscriptions Page - ADM Panel
 
-- HASH: Referente ao código HASH da solicitação de pagamento que foi efetuada para aquela assinatura.
-- ID da Assinatura: Identificador único da assinatura.
-- Nome do Usuário: Nome do usuário associado à assinatura.
-- ID do Usuário: Identificador único do usuário.
-- Status do Pagamento: Pode ser "ativo" se a data de término da assinatura ainda não foi atingida, ou "expirada" se a data de término já foi alcançada.
-- Início da Assinatura: Data de início da assinatura.
-- Término da Assinatura: Data de término da assinatura.
+The Subscriptions page in the ADM Panel lists all finalized subscriptions that have been activated based on a payment request. It displays the following fields:
 
-Na página Assinaturas, há um botão para exclusão da assinatura, com uma pré-confirmação para evitar exclusões acidentais. O próprio sistema verifica se a assinatura já atingiu sua data de término e, nesse caso, o sistema removerá automaticamente a assinatura do usuário.
+HASH: Refers to the HASH code of the payment request that was made for that subscription.
+Subscription ID: Unique identifier of the subscription.
+User Name: Name of the user associated with the subscription.
+User ID: Unique identifier of the user.
+Payment Status: Can be "active" if the subscription end date has not been reached yet, or "expired" if the end date has already been reached.
+Subscription Start: Start date of the subscription.
+Subscription End: End date of the subscription.
+On the Subscriptions page, there is a button to delete a subscription, with a pre-confirmation to prevent accidental deletions. The system itself checks if the subscription has already reached its end date, and in that case, the system will automatically remove the subscription.
 
-Essa página fornece uma visão geral das assinaturas ativas e expiradas no sistema, permitindo ao administrador gerenciar as assinaturas dos usuários de forma eficiente.
+This page provides an overview of active and expired subscriptions in the system, allowing the administrator to efficiently manage user subscriptions.
 
-### Página Minhas Playlists
+### My Playlists Page
 
-A página Minhas Playlists permite aos usuários criar e gerenciar suas playlists de músicas. No entanto, é importante ressaltar que, na data atual (14/07/2023), o recurso de músicas está em desenvolvimento e algumas funcionalidades ainda estão sendo implementadas. 
+The My Playlists page allows users to create and manage their music playlists. However, it is important to note that, as of the current date (14/07/2023), the music feature is under development, and some functionalities are still being implemented.
 
-Atualmente, os usuários podem criar playlists fornecendo um título e selecionando uma capa para a playlist. As imagens de capa estão sujeitas a restrições de formato, como JPEG, JPG, PNG, GIF, e tamanho máximo de 5MB. Além disso, existe um limite de 10 playlists por usuário.
+Currently, users can create playlists by providing a title and selecting a cover for the playlist. Cover images are subject to format restrictions such as JPEG, JPG, PNG, GIF, and a maximum size of 5MB. Additionally, there is a limit of 10 playlists per user.
 
-As playlists são registradas como públicas por padrão, mas haverá uma alteração futura para permitir que os usuários escolham se desejam que suas playlists sejam privadas ou públicas durante o cadastro.
+The playlists are registered as public by default, but there will be a future change to allow users to choose whether they want their playlists to be private or public during the creation process.
 
-Na página Minhas Playlists, os usuários têm a opção de excluir uma playlist, mas é necessária uma pré-confirmação para evitar exclusões acidentais. O botão de edição de playlist ainda está em desenvolvimento e será implementado posteriormente.
+On the My Playlists page, users have the option to delete a playlist, but a pre-confirmation is required to prevent accidental deletions. The playlist editing button is still under development and will be implemented later.
 
-Ao selecionar uma playlist, o usuário será redirecionado para uma página que exibe a capa da playlist, o título e uma paleta de cores gerada por um algoritmo de biblioteca para reconhecimento das cores predominantes. No entanto, a adição de músicas ainda está em desenvolvimento e será implementada em uma etapa posterior.
+When selecting a playlist, the user will be redirected to a page that displays the playlist cover, title, and a color palette generated by a library algorithm to recognize the predominant colors. However, the addition of songs is still under development and will be implemented in a later stage.
 
-A página Minhas Playlists proporcionará aos usuários a capacidade de criar e personalizar suas próprias coleções de músicas de forma fácil e intuitiva, assim que o recurso de adição de músicas estiver completamente implementado.
+The My Playlists page will provide users with the ability to create and customize their own music collections in an easy and intuitive way, once the song addition feature is fully implemented.
 
-## Requisitos
+## Requirements
 
-- Linguagem: Java
-- IDE: Netbeans 8.2
-- Estrutura: Web
-- Padrão de Projeto: MVC (Model-View-Controller) com DAO (Data Access Object)
+Language: Java
+IDE: Netbeans 8.2
+Structure: Web
+Design Pattern: MVC (Model-View-Controller) with DAO (Data Access Object)
 
-## Dependências
-- As seguintes dependências são necessárias para o projeto:
+## Dependencies
 
-Driver JDBC do MySQL 5.1.23: é utilizado para estabelecer a conexão com o banco de dados MySQL versão 5.1.23.
+The following dependencies are required for the project:
+MySQL 5.1.23 JDBC Driver: Used to establish a connection with the MySQL database version 5.1.23.
 
-## Como Executar
+## How to Run
 
-1. Clone o repositório em sua máquina local.
-2. Abra o projeto no Netbeans 8.2.
-3. Configure as dependências necessárias.
-4. Compile e execute o projeto.
-5. Siga as instruções na interface gráfica para utilizar as funcionalidades da aplicação.
+Clone the repository to your local machine.
+Open the project in Netbeans 8.2.
+Configure the required dependencies.
+Compile and run the project.
+Follow the instructions in the graphical interface to use the application's functionalities.
+Contribution
+Contributions to improve and expand the application are welcome. Feel free to send pull requests and report issues in the project repository.
 
-## Contribuição
+## Resources Under Development
+We are constantly working on new features and functionalities to enhance the user experience. Below are some features that are currently under development:
 
-Contribuições para aprimorar e expandir a aplicação são bem-vindas. Sinta-se à vontade para enviar pull requests e relatar problemas no repositório do projeto.
+### Editing Own Playlists
+We are developing the functionality that will allow users to edit their existing playlists. This will include the ability to change the playlist title, add or remove songs, and update the playlist cover.
 
-## Recursos em Desenvolvimento
+### Adding Songs to Playlists
+We are working on implementing the option to add songs to playlists. Users will be able to search for and select songs to include in their playlists, making them personalized according to their musical preferences.
 
-Estamos constantemente trabalhando em novos recursos e funcionalidades para aprimorar a experiência do usuário. Abaixo estão alguns recursos que estão atualmente em desenvolvimento:
+### Searching for Other Users' Playlists
+We are developing a search page that will allow users to find playlists created by other users. This functionality will allow filtering playlists by genre, popularity, or other criteria, as well as viewing the songs contained in each playlist and the name of the user who created it.
 
-### Edição de Playlists Próprias
+### Option to Follow Users
+We are implementing the option to follow other users on the platform. Users will be able to choose to follow profiles of other users, which will allow them to receive updates about the playlists created by those users and view their posts.
 
-Estamos desenvolvendo a funcionalidade que permitirá aos usuários editar suas playlists existentes. Isso incluirá a capacidade de alterar o título da playlist, adicionar ou remover músicas e atualizar a capa da playlist.
+### Favoriting Songs and Creating Favorite Playlist
+We are working on the functionality to favorite songs, allowing users to save their favorite songs in a separate playlist. This favorite playlist will be easily accessible and will allow users to organize and quickly access their favorite songs.
 
-### Adição de Músicas nas Playlists
+### Followed Users' Posts Page
+We are developing a page that will display posts from users you follow. In this page, you will be able to see the playlists created by those users, as well as any updates or changes made to those playlists.
 
-Estamos trabalhando na implementação da opção de adicionar músicas às playlists. Os usuários poderão pesquisar e selecionar músicas para incluir em suas playlists, tornando-as personalizadas de acordo com suas preferências musicais.
+We are committed to providing a dynamic and enriching music environment, and these features under development aim to further enhance our users' experience. Stay tuned for future updates!
 
-### Pesquisa de Playlists de Outros Usuários
+## Project Images
 
-Estamos desenvolvendo uma página de pesquisa que permitirá aos usuários encontrar playlists criadas por outros usuários. Essa funcionalidade permitirá filtrar as playlists por gênero, popularidade ou outros critérios, além de visualizar as músicas contidas em cada playlist e o nome do usuário que a criou.
-
-### Opção de Seguir Usuários
-
-Estamos implementando a opção de seguir outros usuários na plataforma. Os usuários poderão escolher seguir perfis de outros usuários, o que lhes permitirá receber atualizações sobre as playlists criadas por esses usuários e visualizar suas publicações.
-
-### Favoritar Músicas e Criar Playlist de Favoritos
-
-Estamos trabalhando na funcionalidade de favoritar músicas, permitindo aos usuários salvar suas músicas favoritas em uma playlist separada. Essa playlist de favoritos será de fácil acesso e permitirá que os usuários organizem e acessem rapidamente suas músicas preferidas.
-
-### Página de Publicações dos Usuários Seguidos
-
-Estamos desenvolvendo uma página que exibirá as publicações dos usuários que você segue. Nessa página, você poderá ver as playlists criadas por esses usuários, bem como quaisquer atualizações ou alterações feitas nessas playlists.
-
-Estamos empenhados em fornecer um ambiente musical dinâmico e enriquecedor, e esses recursos em desenvolvimento visam melhorar ainda mais a experiência dos nossos usuários. Fique atento às futuras atualizações!
-
-## Imagens do Projeto
-
-### Página de Login/Cadastro
+### Login/Register Page
 
 ![Página de Login/Cadastro](imgsReadme/front.png)
 
-### Página Inicial
+### Index Page
 
 ![Página Inicial](imgsReadme/index.png)
 
-### Página de Edição de Perfil
+### Edit Profile Page
 
 ![Página de Edição de Perfil](imgsReadme/editar_perfil.png)
 
-### Página de Planos de Assinatura
+### Artist Playlist
+
+![Página de Playlists](imgsReadme/artist.png)
+
+### premium subscription plans page
 
 ![Página de Planos de Assinatura](imgsReadme/planos.png)
 
-### Página do Painel de Administração (PAINEL ADM)
+### admin panel
 
 ![Página do Painel de Administração](imgsReadme/painel_adm.png)
 
-### Página de Pagamentos no Painel de Administração
+### Payments Page (ADM)
 
-![Página de Pagamentos](imgsReadme/pagamento.png)
+![Página de Pagamentos](imgsReadme/pgtos.png)
 
-### Página de Assinaturas no Painel de Administração
+## List Users (ADM)
+
+![Página de Planos de Assinatura](imgsReadme/adm.png)
+
+### Subscriptions Page (ADM)
 
 ![Página de Assinaturas](imgsReadme/assinatura.png)
 
-### Página de Minhas Playlists
+
+### User Restriction Page (ADM)
+
+![Página de Restrição](imgsReadme/restricao.png)
+
+### My Playlists Page
 
 ![Página de Minhas Playlists](imgsReadme/minhas_playlists.png)
