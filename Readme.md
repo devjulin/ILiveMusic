@@ -1,6 +1,9 @@
 # ILiveMusic - Music Streaming Application
 
-![ILiveMusic Logo](imgsReadme/logo-ilivemusic.png)
+<p align="center">
+  ![ILiveMusic Logo](imgsReadme/logo-ilivemusic.png)
+</p>
+
 
 This is the README file for the ILiveMusic music streaming application developed in Java using the Netbeans 8.2 IDE. The application follows a web structure and utilizes the MVC (Model-View-Controller) pattern with DAO (Data Access Object).
 
