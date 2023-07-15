@@ -1,4 +1,6 @@
-# ILiveMusic - Music Streaming Application
+<div align="center">
+  <h1>ILiveMusic - Music Streaming Application</h1>
+</div>
 
 <div align="center">
   <img src="imgsReadme/logo-ilivemusic.png" alt="ILiveMusic Logo">
@@ -202,47 +204,69 @@ We are committed to providing a dynamic and enriching music environment, and the
 
 ## Project Images
 
-### Login/Register Page
+<div align="center">
+<h1 style="font-size: 16px; font-weight: bold;">Login/Register Page</h1>
+</div>
 
 ![Página de Login/Cadastro](imgsReadme/front.png)
 
-### Index Page
+<div align="center">
+<h1 style="font-size: 16px; font-weight: bold;">Index Page</h1>
+</div>
 
 ![Página Inicial](imgsReadme/index.png)
 
-### Edit Profile Page
+<div align="center">
+<h1 style="font-size: 16px; font-weight: bold;">Edit Profile Page</h1>
+</div>
 
 ![Página de Edição de Perfil](imgsReadme/editar_perfil.png)
 
-### Artist Playlist
+<div align="center">
+<h1 style="font-size: 16px; font-weight: bold;">Artist Playlist</h1>
+</div>
 
 ![Página de Playlists](imgsReadme/artist.png)
 
-### premium subscription plans page
+<div align="center">
+<h1 style="font-size: 16px; font-weight: bold;">Premium Subscription Plans Page</h1>
+</div>
 
 ![Página de Planos de Assinatura](imgsReadme/planos.png)
 
-### admin panel
+<div align="center">
+<h1 style="font-size: 16px; font-weight: bold;">Admin Panel Page</h1>
+</div>
 
 ![Página do Painel de Administração](imgsReadme/painel_adm.png)
 
-### Payments Page (ADM)
+<div align="center">
+<h1 style="font-size: 16px; font-weight: bold;">Payments Page (ADM)</h1>
+</div>
 
 ![Página de Pagamentos](imgsReadme/pgtos.png)
 
-## List Users (ADM)
+<div align="center">
+<h1 style="font-size: 16px; font-weight: bold;">List Users (ADM)</h1>
+</div>
 
 ![Página de Planos de Assinatura](imgsReadme/adm.png)
 
-### Subscriptions Page (ADM)
+<div align="center">
+<h1 style="font-size: 16px; font-weight: bold;">Subscriptions (ADM)</h1>
+</div>
 
 ![Página de Assinaturas](imgsReadme/assinatura.png)
 
 
-### User Restriction Page (ADM)
+<div align="center">
+<h1 style="font-size: 16px; font-weight: bold;">User Restriction Page (ADM)</h1>
+</div>
 
 ![Página de Restrição](imgsReadme/restricao.png)
 
-### My Playlists Page
+<div align="center">
+<h1 style="font-size: 16px; font-weight: bold;">My Playlists Page</h1>
+</div>
 
 ![Página de Minhas Playlists](imgsReadme/minhas_playlists.png)
